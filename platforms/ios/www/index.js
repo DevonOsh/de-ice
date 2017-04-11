@@ -2,14 +2,9 @@
 document.addEventListener('deviceready', function() {
 	alert("Device is ready!");
 
-	//PouchDB.plugin(PouchAdapterCordovaSqlite);
-
 	var db;
 
-	//if (ons.platform.isIOS() || ons.platform.isAndroid())
-  		db = new PouchDB('app_rate.db');
-  	//else
-  	//	db = new PouchDB('app_rate.db');
+ 	db = new PouchDB('app_rate.db');
 
   	var applicationRates = [
   		{_id: '1000', temp: "30", forecast: "rising", weather: "snow",
@@ -98,12 +93,12 @@ document.addEventListener('deviceready', function() {
 		keys: 
 	})
 	*/
-	
 
-  //function showTableData() {
-  //	db.allDocs({include_docs: true, descending: true}, function(error, result) {
-  //		console.table(result.rows);
-  //	});
-  //}
+  db.get('1015').then(function(doc) {
+      var tempResult = doc.temp;
+      alert(tempResult);
+  }).catch(function(error) {
+      alert(error);
+  });
   
 });
