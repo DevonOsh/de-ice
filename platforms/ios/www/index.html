@@ -6,24 +6,57 @@
         <title>Blank App</title>
 
         <!--<link rel="stylesheet" href="bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-base.css" type="text/css" />-->
+        <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+
+        
+        <script type="text/javascript" src="bower_components/pouchdb/dist/pouchdb.min.js"></script>
+        <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+        <script src="lib/pouchdb.cordova-sqlite.js"></script>
+
+        <script type="text/javascript" src="cordova.js"></script>
+        
+        <script type="text/javascript" src="js/data.js"></script>
+        <script type="text/javascript" src="index.js"></script>
 
     </head>
     <body>
 
-        <div ng-app="deIceApp" ng-controller="calcCtrl">
+        <div ng-app="deIceApp" ng-controller="calcCtrl" class="container">
 
-            <div id="calcForm">
-                <select ng-model="selectedTemp" ng-options="tempVal for temp in temps">
+        	<header>
+				<base href="/">
+				<nav class="navbar navbar-default">
+					<div class="container">
+						<div class="navbar-header">
+							<a class="navbar-brand" href="/">De-ice</a>
+						</div>
+
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="#/"><i class="fa fa-home"></i>Menu</a></li>
+						</ul>
+					</div>
+				</nav>
+			</header>
+
+            <div id="calcForm" class="form-group col-xs-12">
+            	<label for="tempSelect">Temperature</label>
+                <select class="form-control" id="tempSelect" name="tempSelect" ng-model="selectedTemp" ng-options="tempVal for temp in temps">
                 </select>
+
+                <label for="forecastSelect">Forecast</label>
+                <select class="form-control" id="forecastSelect" name="forecastSelect" ng-model="selectedForecast" ng-options="">
+                </select>
+
+                <label for="materialSelect">Material</label>
+                <select class="form-control" id="materialSelect" name="materialSelect" ng-model="selectedMaterial" ng-options="">
+                </select>
+
+                <label for="areaInput">Area</label>
+                <input class="form-control" id="areaInput" name="areaInput" type="numeric" ng-model="area" />
+
+                <button class="btn btn-lg btn-default" type="submit">Submit</button>
             </div>
 
         </div>
-
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="bower_components/pouchdb/dist/pouchdb.min.js"></script>
-        <script type="text/javascript" src="bower_components/angular/angular.js"></script>
-        <script src="lib/pouchdb.cordova-sqlite.js"></script>
-        <script type="text/javascript" src="js/data.js"></script>
-        <script type="text/javascript" src="index.js"></script>
     </body>
 </html>
