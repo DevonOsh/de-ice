@@ -17,11 +17,12 @@
         
         <script type="text/javascript" src="js/data.js"></script>
         <script type="text/javascript" src="index.js"></script>
+        <!--<script type="text/javascript" src="js/controller.js"></script>-->
 
     </head>
     <body>
 
-        <div ng-app="deIceApp" ng-controller="calcCtrl" class="container">
+        <div id="deIceApp" ng-controller="calcCtrl" class="container">
 
         	<header>
 				<base href="/">
@@ -40,15 +41,15 @@
 
             <div id="calcForm" class="form-group col-xs-12">
             	<label for="tempSelect">Temperature</label>
-                <select class="form-control" id="tempSelect" name="tempSelect" ng-model="selectedTemp" ng-options="tempVal for temp in temps">
+                <select class="form-control" id="tempSelect" name="tempSelect" ng-model="selectedTemp" ng-options="tempVal as temp for temp in temps">
                 </select>
 
                 <label for="forecastSelect">Forecast</label>
-                <select class="form-control" id="forecastSelect" name="forecastSelect" ng-model="selectedForecast" ng-options="">
+                <select class="form-control" id="forecastSelect" name="forecastSelect" ng-model="selectedForecast" ng-options="foreCastVal as foreCast for foreCast in foreCasts">
                 </select>
 
                 <label for="materialSelect">Material</label>
-                <select class="form-control" id="materialSelect" name="materialSelect" ng-model="selectedMaterial" ng-options="">
+                <select class="form-control" id="materialSelect" name="materialSelect" ng-model="selectedMaterial" ng-options="weatherVal as weather for weather in weather">
                 </select>
 
                 <label for="areaInput">Area</label>
@@ -58,5 +59,18 @@
             </div>
 
         </div>
+        <!--
+        <script>
+        	var deIceApp = angular.module('deIceApp',[]);
+
+        	  deIceApp.controller('calcCtrl', function($scope) {
+			      $scope.temps = ["30", "25-30", "20-25", "15-20", "0-15", "0"];
+			      //$scope.forecasts = ["Rising", "Falling"];
+			      //$scope.weather = ["Snow", "Freezing Rain"];
+			      //$scope.material = ["Wetted salt: brine", "Wetted salt:other", "Dry salt", "Sand"];
+			      $scope.area = "100 sq. ft";
+			  });
+        </script>
+        -->
     </body>
 </html>
