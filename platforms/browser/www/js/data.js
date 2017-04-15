@@ -67,3 +67,14 @@ function initData(db) {
   			alert(error);
   		});
 }
+
+function getRecord(db, recID) {
+  var temp = {};
+  db.get('1015').then(function(doc) {
+      tempResult = doc.temp;
+  }).catch(function(error) {
+      tempResult = error;
+  });
+
+  return tempResult;
+}
