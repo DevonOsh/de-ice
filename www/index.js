@@ -13,7 +13,8 @@ document.addEventListener('deviceready', function() {
 
   //This code is for testing the database control code in appData,js
   //If successfull, this is the code that will be used.
-  
+  //fillDB();
+  fillDB();
 
   //Manually bootstrap Angular when device is ready
   angular.element(document).ready(function() {

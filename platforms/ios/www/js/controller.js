@@ -4,4 +4,8 @@
       $scope.weather = ["Snow", "Freezing Rain"];
       $scope.material = ["Wetted salt: brine", "Wetted salt:other", "Dry salt", "Sand"];
       $scope.area = "100 sq. ft";
+
+      $scope.getRecord = function() {
+      	
+      }
   });
