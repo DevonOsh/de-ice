@@ -68,7 +68,7 @@
     db.get('1000').then(function(doc) {
         var docTemp = doc.temp;
         alert("The app has data, here's the temp: " + docTemp);
-        getRate('1000', '1004'); 
+        //getRate('1000', '1004'); 
     }).catch(function(error) {
         alert("No record found, fill that DB!");
     });
@@ -104,31 +104,66 @@
       */
 	 }
 
-	 function getRate(start, end) {
-	 	var temp = "0-15";
-	 	var db = new PouchDB('app_rate.db');
-	 	var rates = {};
+	 function getRate(start, end, forecast, weather, material) {
+    	 	var db = new PouchDB('app_rate.db');
+        var finalRate;
 
-    db.allDocs({ include_docs: true, startkey: start, endkey: end}).then(function(result) {
-        var results = result.rows;
-        var numResults = results.length;
-        var row = result.rows[3].doc;
-        var appRate = row.rates.salt_wet_brine;
+        db.allDocs({ include_docs: true, startkey: start, endkey: end}).then(function(result) {
+            var results = result.rows;
+            alert("Results: " + results.length);
 
-        alert("Found this many: " + numResults);
-        alert("This is the application rate: " + appRate);
-    }).catch(function(error) {
-        alert("Found none many :(");
-    });
+            finalRate = searchRates(material, 
+              searchWeather(weather, 
+                searchForecast(forecast, results)
+              )
+            );
+        }).catch(function(error) {
+            alert("Found none many :(" + error);
+        });
 
-	 	//Query the database using the index created
-    /*
-	 	db.query('tempIndex', {key: temp })
-	 	.then(function(result) {
-	 		rates = result;
-	 		var saltWet = rates.selt_wet_brine;
-	 		alert(saltWet);
-	 	});
-    */
+        function searchForecast(key, records) {
+          alert("Searching forecasts...");
 
+          var foundRecords = [];
+          for (var i=0; i < records.length; i++ ) {
+            if (records[i].doc.forecast == key) {
+              foundRecords.push(records[i]);
+            }
+          }
+          alert(foundRecords.length);
+          return foundRecords;
+        }
+
+        function searchWeather(key, records) {
+          alert("Searching weather..." + records.length);
+          var foundRecords = [];
+          for (var i=0; i < records.length; i++ ) {
+            if (records[i].doc.weather === key) {
+              foundRecords.push(records[i]);
+            }
+          }
+          alert(foundRecords.length);
+          return foundRecords;
+        }
+
+        function searchRates(key, record) {
+          var appRate;
+          var rates = record.rates;
+          if (key === 'salt_brine') {
+            appRate = rates.salt_wet_brine;
+          }
+          if (key === 'salt_other') {
+            appRate = rates.salt_wet_other;
+          }
+          if (key === 'salt_dry') {
+            appRate = rates.salt_dry;
+          }
+          if (key === 'sand') {
+            appRate = rates.sand;
+          }
+
+          return appRate;
+        }
+
+        return finalRate;
 	 }
