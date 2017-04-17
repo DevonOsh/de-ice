@@ -8,10 +8,10 @@
           { start: '1019', end: '1019', text: '0'}
       ];
       $scope.forecasts = [
-          { text: "Rising" }, {text: "Falling"}
+          { id: 'rising', text: "Rising" }, {id: 'falling',text: "Falling"}
       ];
       $scope.weather = [
-          { text: "Snow" }, {text: "Freezing Rain" }
+          { id: 'snow', text: "Snow" }, { id: 'freezing rain' ,text: "Freezing Rain" }
       ];
       $scope.materialOptions = [
           { id: 'salt_brine', text: "Wetted salt: brine"}, 
@@ -25,11 +25,15 @@
       $scope.getRecord = function() {
         	 var start = $scope.formData.selectedTemp.start;
            var end = $scope.formData.selectedTemp.end;
-           var forecast = $scope.formData.selectedForecast.text;
-           var weather = $scope.formData.selectedWeather.text;
+           var forecast = $scope.formData.selectedForecast.id;
+           var weather = $scope.formData.selectedWeather.id;
            var material = $scope.formData.selectedMaterial.id;
 
             var applicationRate = getRate(start, end, forecast, weather, material);
             alert("Application rate: " + applicationRate);
       };
+  });
+
+  deIceApp.controller('journalCtrl', function($scope) {
+      $scope.message = "Controller connected";
   });

@@ -2,24 +2,19 @@
 document.addEventListener('deviceready', function() {
 	alert("Device is ready!");
 
-	var appRatesDB;
-
- 	appRatesDB = new PouchDB('app_rate.db');
-
-  initData(appRatesDB);
+  //The following three statements relate to the database code from 
+	//var appRatesDB;
+ 	//appRatesDB = new PouchDB('app_rate.db');
+  //initData(appRatesDB);
 
   //var message = (appRatesDB.adapter ? '&#10003; PouchDB is working.' : '&#1007; PouchDB is not working');
   
   //document.write(message);
 
-  /*
-  appRatesDB.get('1015').then(function(doc) {
-      var tempResult = doc.temp;
-      alert(tempResult);
-  }).catch(function(error) {
-      alert(error);
-  });
-  */
+  //This code is for testing the database control code in appData,js
+  //If successfull, this is the code that will be used.
+  //fillDB();
+  fillDB();
 
   //Manually bootstrap Angular when device is ready
   angular.element(document).ready(function() {
@@ -29,4 +24,25 @@ document.addEventListener('deviceready', function() {
   
 }, false);
 
-var deIceApp = angular.module('deIceApp',[]);
+var deIceApp = angular.module('deIceApp',["ngRoute"]);
+
+deIceApp.config(['$locationProvider', function($locationProvider) {
+  $locationProvider.hashPrefix('');
+}]);
+
+deIceApp.config(function($routeProvider){
+  $routeProvider
+  .when("/", {
+    templateUrl: "./views/calculationForm.html",
+    controller: "calcCtrl"
+  })
+  .when("/journal", {
+    templateUrl: "./views/journal.html",
+    controller: "journalCtrl"
+  })
+  .otherwise({
+    template: "<h1>No template found</h1>"
+  });
+});
+
+

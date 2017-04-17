@@ -69,7 +69,7 @@ function initData(db) {
 }
 
 function getRecord(db, recID) {
-  var temp = {};
+  var tempResult = {};
   db.get('1015').then(function(doc) {
       tempResult = doc.temp;
   }).catch(function(error) {

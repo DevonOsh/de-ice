@@ -11,18 +11,19 @@
         
         <script type="text/javascript" src="bower_components/pouchdb/dist/pouchdb.min.js"></script>
         <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+        <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
         <script src="lib/pouchdb.cordova-sqlite.js"></script>
 
         <script type="text/javascript" src="cordova.js"></script>
         
-        <script type="text/javascript" src="js/data.js"></script>
+        <script type="text/javascript" src="js/appData.js"></script>
         <script type="text/javascript" src="index.js"></script>
         <script type="text/javascript" src="js/controller.js"></script>
 
     </head>
     <body>
 
-        <div id="deIceApp" ng-controller="calcCtrl" class="container">
+        <div id="deIceApp" class="container">
 
         	<header>
 				<base href="/">
@@ -33,30 +34,14 @@
 						</div>
 
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="#/"><i class="fa fa-home"></i>Menu</a></li>
+							<li><a href="#/">Menu</a></li>
+                            <li><a href="#/journal">Journal</a></li>
 						</ul>
 					</div>
 				</nav>
 			</header>
 
-            <div id="calcForm" class="form-group col-xs-12">
-            	<label for="tempSelect">Temperature</label>
-                <select class="form-control" id="tempSelect" name="tempSelect" ng-model="selectedTemp" ng-options="tempVal as temp for temp in temps">
-                </select>
-
-                <label for="forecastSelect">Forecast</label>
-                <select class="form-control" id="forecastSelect" name="forecastSelect" ng-model="selectedForecast" ng-options="foreCastVal as foreCast for foreCast in foreCasts">
-                </select>
-
-                <label for="materialSelect">Material</label>
-                <select class="form-control" id="materialSelect" name="materialSelect" ng-model="selectedMaterial" ng-options="weatherVal as weather for weather in weather">
-                </select>
-
-                <label for="areaInput">Area</label>
-                <input class="form-control" id="areaInput" name="areaInput" type="numeric" ng-model="area" />
-
-                <button class="btn btn-lg btn-default" type="submit">Submit</button>
-            </div>
+        <ng-view></ng-view>
 
         </div>
     </body>

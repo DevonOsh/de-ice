@@ -33,3 +33,7 @@
             alert("Application rate: " + applicationRate);
       };
   });
+
+  deIceApp.controller('journalCtrl', function($scope) {
+      $scope.message = "Controller connected";
+  });

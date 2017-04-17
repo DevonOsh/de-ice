@@ -24,4 +24,25 @@ document.addEventListener('deviceready', function() {
   
 }, false);
 
-var deIceApp = angular.module('deIceApp',[]);
+var deIceApp = angular.module('deIceApp',["ngRoute"]);
+
+deIceApp.config(['$locationProvider', function($locationProvider) {
+  $locationProvider.hashPrefix('');
+}]);
+
+deIceApp.config(function($routeProvider){
+  $routeProvider
+  .when("/", {
+    templateUrl: "./views/calculationForm.html",
+    controller: "calcCtrl"
+  })
+  .when("/journal", {
+    templateUrl: "./views/journal.html",
+    controller: "journalCtrl"
+  })
+  .otherwise({
+    template: "<h1>No template found</h1>"
+  });
+});
+
+
