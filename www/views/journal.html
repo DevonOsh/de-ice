@@ -1,2 +1,11 @@
-<h3>Journal Page</h3>
-<p>{{ message }}
+<div id="journalMain" class="col-xs-12">
+	<a href="#/journalEntry" class="btn btn-primary btn-lg">Add New Entry</a>
+
+	<div class="col-xs-12">
+		<ul class="list-group">
+			<li id="{{journal._id}}" class="list-group-item col-xs-12" ng-repeat="journal in journals">
+				{{journal.date | date: 'MM-dd-yyyy'}}
+			</li>
+		</ul>
+	</div>
+</div>

@@ -1,0 +1,10 @@
+	<form>
+		<div class="form-group">
+			<input type="text" class="form-control input-lg text-center" placeholder="Temperature" ng-model="journalData.temp" />
+			<input type="text" class="form-control input-lg text-center" placeholder="Material" ng-model="journalData.material" />
+			<input type="text" class="form-control input-lg text-center" placeholder="Amount Expected" ng-model="journalData.expectedAmt" />
+			<input type="text" class="form-control input-lg text-center" placeholder="Amount Used" ng-model="journalData.actualAmt" />
+		</div>
+
+		<button type="submit" class="btn btn-primary btn-lg" ng-click="addJournal()">Add Item</button>
+	</form>

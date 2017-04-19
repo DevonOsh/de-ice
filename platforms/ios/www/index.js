@@ -34,11 +34,11 @@ deIceApp.config(['$locationProvider', function($locationProvider) {
 deIceApp.config(function($routeProvider){
   $routeProvider
   .when("/", {
-    templateUrl: "../www/views/calculationForm.html",
+    templateUrl: "views/calculationForm.html",
     controller: "calcCtrl"
   })
-  .when("/journal", {
-    templateUrl: "../www/views/journal.html",
+  .when("/journal/", {
+    templateUrl: "views/journal.html",
     controller: "journalCtrl"
   })
   .otherwise({

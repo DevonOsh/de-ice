@@ -59,29 +59,30 @@
   		}
 	 ];
 
-	 function fillDB() {
+	 function checkDB() {
 	 	var db = new PouchDB('app_rate.db');
-	 	var appRates = ratesData;
     var hasData = false;
 
 	 	//Bulk load all the docs into the database
     db.get('1000').then(function(doc) {
         var docTemp = doc.temp;
         alert("The app has data, here's the temp: " + docTemp);
-        //getRate('1000', '1004'); 
     }).catch(function(error) {
         alert("No record found, fill that DB!");
+        fillDB(); 
     });
+  }
 
-    //Bulk add the documents
+  function fillDB() {
+    var db = new PouchDB('app_rate.db');
+    var appRates = ratesData;
 
-    /*
-	 	db.bulkDocs(appRates).then(function(result) {
-  			alert("Successful upload!");
-  	}).catch(function(error) {
-  			alert(error);
-  	});
-    */
+    db.bulkDocs(appRates).then(function(result) {
+        alert("Successful upload!");
+    }).catch(function(error) {
+        alert(error);
+    });
+  }
 
   		//Create the temps index for running queries on
       /*
@@ -102,7 +103,6 @@
   			alert("Error creating index: " + error);
   		});
       */
-	 }
 
 	 function getRate(start, end, forecast, weather, material) {
     	 	var db = new PouchDB('app_rate.db');
@@ -167,3 +167,31 @@
 
         return finalRate;
 	 }
+
+   function addJournal(data) {
+      var db = new PouchDB('journal.db');
+
+      db.post(data).then(function(reponse) {
+        alert(response);
+      }).catch(function(error) {
+        alert(error);
+      });
+
+   }
+
+   //FIXME
+   function getJournals() {
+      var db = new PouchDB('journal.db');
+      var journals = [];
+
+      db.allDocs({ include_docs: true }).then(function(response) {
+        journals = response.rows;
+        return journals;
+      }).catch(function(error) {
+        alert(error);
+      });
+   }
+
+   function deleteJournal(id) {
+      alert("Write delete fucntion.");
+   }

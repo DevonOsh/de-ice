@@ -13,7 +13,7 @@ document.addEventListener('deviceready', function() {
 
   //This code is for testing the database control code in appData,js
   //If successfull, this is the code that will be used.
-  fillDB();
+  checkDB();
 
   //Manually bootstrap Angular when device is ready
   angular.element(document).ready(function() {
@@ -25,21 +25,28 @@ document.addEventListener('deviceready', function() {
 
 var deIceApp = angular.module('deIceApp',["ngRoute"]);
 
-/*
+
 deIceApp.config(['$locationProvider', function($locationProvider) {
   $locationProvider.hashPrefix('');
 }]);
-*/
+
 
 deIceApp.config(function($routeProvider){
   $routeProvider
   .when("/", {
-    templateUrl: "../www/views/calculationForm.html",
+    templateUrl: "views/calculationForm.html",
     controller: "calcCtrl"
   })
   .when("/journal", {
-    templateUrl: "../www/views/journal.html",
+    templateUrl: "views/journal.html",
     controller: "journalCtrl"
+  })
+  .when("/journalEntry", {
+    templateUrl: "views/journalEntry.html",
+    controller: "journalEntryCtrl"
+  })
+  .when("/learn", {
+    templateUrl: "views/learn.html"
   })
   .otherwise({
     template: "<h1>No template found</h1>"
