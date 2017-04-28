@@ -104,30 +104,6 @@
   		});
       */
 
-	 function getRate(start, end, forecast, weather, material) {
-    	 	var db = new PouchDB('app_rate.db');
-        var finalRate;
-        alert("Material at beginning of getRate: " + material);
-
-        db.allDocs({ include_docs: true, startkey: start, endkey: end}).then(function(result) {
-            var results = result.rows;
-            alert("Results: " + results.length);
-
-            finalRate = searchRates(material, 
-              searchWeather(weather, 
-                searchForecast(forecast, results)
-              )
-            );
-
-            console.log("Final rate: " + finalRate);  //FIXME remove
-            return finalRate;
-        }).catch(function(error) {
-            alert("Found none many :(" + error);
-        });
-
-        return finalRate;
-	 }
-
   function searchForecast(key, records) {
       alert("Searching forecasts...");
 
