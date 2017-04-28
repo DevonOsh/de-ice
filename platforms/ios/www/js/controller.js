@@ -29,11 +29,19 @@
            var weather = $scope.formData.selectedWeather.id;
            var material = $scope.formData.selectedMaterial.id;
 
-            var applicationRate = getRate(start, end, forecast, weather, material);
-            alert("Application rate: " + applicationRate);
+          var applicationRate = getRate(start, end, forecast, weather, material);
       };
   });
 
   deIceApp.controller('journalCtrl', function($scope) {
-      $scope.message = "Controller connected";
+      getJournals();
+  });
+
+  deIceApp.controller('journalEntryCtrl', function($scope, $location) {
+      $scope.journalData.date = new Date();
+      $scope.addJournal = function() {
+        alert($scope.journalData.temp);   //FIXME remove
+        addJournal($scope.journalData);
+        $location.path("/journal");
+      };
   });

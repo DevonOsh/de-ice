@@ -107,6 +107,7 @@
 	 function getRate(start, end, forecast, weather, material) {
     	 	var db = new PouchDB('app_rate.db');
         var finalRate;
+        alert("Material at beginning of getRate: " + material);
 
         db.allDocs({ include_docs: true, startkey: start, endkey: end}).then(function(result) {
             var results = result.rows;
@@ -117,9 +118,14 @@
                 searchForecast(forecast, results)
               )
             );
+
+            console.log("Final rate: " + finalRate);  //FIXME remove
+            return finalRate;
         }).catch(function(error) {
             alert("Found none many :(" + error);
         });
+
+        return finalRate;
 
         function searchForecast(key, records) {
           alert("Searching forecasts...");
@@ -130,7 +136,8 @@
               foundRecords.push(records[i]);
             }
           }
-          alert(foundRecords.length);
+          alert(foundRecords.length); //FIXME remove
+          console.log(foundRecords);  //FIXME remove  
           return foundRecords;
         }
 
@@ -142,13 +149,15 @@
               foundRecords.push(records[i]);
             }
           }
-          alert(foundRecords.length);
+          alert(foundRecords.length);   //FIXME remove
+          console.log(foundRecords);  //FIXME remove  
           return foundRecords;
         }
 
         function searchRates(key, record) {
+          console.log(record);
           var appRate;
-          var rates = record.rates;
+          var rates = record[0].doc.rates;
           if (key === 'salt_brine') {
             appRate = rates.salt_wet_brine;
           }
@@ -164,8 +173,6 @@
 
           return appRate;
         }
-
-        return finalRate;
 	 }
 
    function addJournal(data) {
@@ -193,5 +200,5 @@
    }
 
    function deleteJournal(id) {
-      alert("Write delete fucntion.");
+      alert("Write delete function.");
    }
