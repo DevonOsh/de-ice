@@ -15,12 +15,14 @@
       ];
       $scope.materialOptions = [
           { id: 'salt_brine', text: "Wetted salt: brine"}, 
-          { id: 'salt_other', text: "Wetted salt:other"}, 
+          { id: 'salt_other', text: "Wetted salt: other"}, 
           { id: 'salt_dry', text: "Dry salt" },
           { id: 'sand', text: "Sand" }
       ];
 
       $scope.area = "100 sq. ft";
+
+      $scope.applicationRate = "Enter info for application rates.";
 
       $scope.getRecord = function() {
         	 var start = $scope.formData.selectedTemp.start;
@@ -29,8 +31,28 @@
            var weather = $scope.formData.selectedWeather.id;
            var material = $scope.formData.selectedMaterial.id;
 
-          var applicationRate = getRate(start, end, forecast, weather, material);
+            getRate(start, end, forecast, weather, material);
       };
+
+      function getRate(start, end, forecast, weather, material) {
+          var db = new PouchDB('app_rate.db');
+          alert("Material at beginning of getRate: " + material);
+
+          db.allDocs({ include_docs: true, startkey: start, endkey: end}).then(function(result) {
+              var results = result.rows;
+              alert("Results: " + results.length);
+
+              $scope.applicationRate = searchRates(material, 
+                searchWeather(weather, 
+                  searchForecast(forecast, results)
+                )
+              );
+
+              console.log("Final rate: " + finalRate);  //FIXME remove
+          }).catch(function(error) {
+              alert("Found none many :(" + error);
+          });
+        }
   });
 
   deIceApp.controller('journalCtrl', function($scope) {

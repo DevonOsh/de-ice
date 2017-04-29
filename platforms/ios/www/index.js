@@ -26,30 +26,35 @@ document.addEventListener('deviceready', function() {
 var deIceApp = angular.module('deIceApp',["ngRoute"]);
 
 
-deIceApp.config(['$locationProvider', function($locationProvider) {
-  $locationProvider.hashPrefix('');
-}]);
+//deIceApp.config(['$locationProvider', function($locationProvider) {
+ // $locationProvider.hashPrefix('');
+//}]);
 
 
-deIceApp.config(function($routeProvider){
+deIceApp.config(function($routeProvider, $locationProvider, $compileProvider){
+$compileProvider.aHrefSanitizationWhitelist(/^\s*(http|ftp|mailto|file|tel):/);
+//$locationProvider.hashPrefix('*');
+
   $routeProvider
   .when("/", {
-    templateUrl: "views/calculationForm.html",
+    templateUrl: 'calculationForm.html',
     controller: "calcCtrl"
   })
   .when("/journal", {
-    templateUrl: "views/journal.html",
+    template: "views/journal.html",
     controller: "journalCtrl"
   })
   .when("/journalEntry", {
-    templateUrl: "views/journalEntry.html",
+    template: "views/journalEntry.html",
     controller: "journalEntryCtrl"
   })
   .when("/learn", {
-    templateUrl: "views/learn.html"
+    template: "views/learn.html"
   })
   .otherwise({
     template: "<h1>No template found</h1>"
+    //templateUrl: 'views/calculationForm.html',
+    //controller: "calcCtrl"
   });
 });
 

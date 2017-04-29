@@ -104,72 +104,54 @@
   		});
       */
 
-	 function getRate(start, end, forecast, weather, material) {
-    	 	var db = new PouchDB('app_rate.db');
-        var finalRate;
-        alert("Material at beginning of getRate: " + material);
+  function searchForecast(key, records) {
+      alert("Searching forecasts...");
 
-        db.allDocs({ include_docs: true, startkey: start, endkey: end}).then(function(result) {
-            var results = result.rows;
-            alert("Results: " + results.length);
-
-            finalRate = searchRates(material, 
-              searchWeather(weather, 
-                searchForecast(forecast, results)
-              )
-            );
-        }).catch(function(error) {
-            alert("Found none many :(" + error);
-        });
-
-        function searchForecast(key, records) {
-          alert("Searching forecasts...");
-
-          var foundRecords = [];
-          for (var i=0; i < records.length; i++ ) {
-            if (records[i].doc.forecast == key) {
-              foundRecords.push(records[i]);
-            }
-          }
-          alert(foundRecords.length);
-          return foundRecords;
+      var foundRecords = [];
+      for (var i=0; i < records.length; i++ ) {
+        if (records[i].doc.forecast == key) {
+          foundRecords.push(records[i]);
         }
+      }
+      alert(foundRecords.length); //FIXME remove
+      console.log(foundRecords);  //FIXME remove  
+      return foundRecords;
+  }
 
-        function searchWeather(key, records) {
-          alert("Searching weather..." + records.length);
-          var foundRecords = [];
-          for (var i=0; i < records.length; i++ ) {
-            if (records[i].doc.weather === key) {
-              foundRecords.push(records[i]);
-            }
-          }
-          alert(foundRecords.length);
-          return foundRecords;
+  function searchWeather(key, records) {
+      alert("Searching weather..." + records.length);
+      var foundRecords = [];
+      for (var i=0; i < records.length; i++ ) {
+        if (records[i].doc.weather === key) {
+          foundRecords.push(records[i]);
         }
+      }
+      alert(foundRecords.length);   //FIXME remove
+      console.log(foundRecords);  //FIXME remove  
+      return foundRecords;
+  }
 
-        function searchRates(key, record) {
-          var appRate;
-          var rates = record.rates;
-          if (key === 'salt_brine') {
-            appRate = rates.salt_wet_brine;
-          }
-          if (key === 'salt_other') {
-            appRate = rates.salt_wet_other;
-          }
-          if (key === 'salt_dry') {
-            appRate = rates.salt_dry;
-          }
-          if (key === 'sand') {
-            appRate = rates.sand;
-          }
+  function searchRates(key, record) {
+      console.log(record);
+      var appRate;
+      var rates = record[0].doc.rates;
+      if (key === 'salt_brine') {
+        appRate = rates.salt_wet_brine;
+      }
+      if (key === 'salt_other') {
+        appRate = rates.salt_wet_other;
+      }
+      if (key === 'salt_dry') {
+        appRate = rates.salt_dry;
+      }
+      if (key === 'sand') {
+        appRate = rates.sand;
+      }
 
-          return appRate;
-        }
+      return appRate;
+  }
 
-        return finalRate;
-	 }
-
-   function addJournal(data) {
+  function addJournal(data) {
       var db = new PouchDB('journal.db');
 
       db.post(data).then(function(reponse) {
@@ -194,5 +176,5 @@
    }
 
    function deleteJournal(id) {
-      alert("Write delete fucntion.");
+      alert("Write delete function.");
    }

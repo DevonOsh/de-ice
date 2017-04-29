@@ -36,7 +36,6 @@
 
       function getRate(start, end, forecast, weather, material) {
           var db = new PouchDB('app_rate.db');
-          var finalRate;
           alert("Material at beginning of getRate: " + material);
 
           db.allDocs({ include_docs: true, startkey: start, endkey: end}).then(function(result) {
