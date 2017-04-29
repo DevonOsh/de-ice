@@ -8,6 +8,10 @@
         PhoneGap Team
     </author>
     <content src="index.html" />
-    <access origin="*" />
+    <allow-navigation href="file://*/*" />
     <allow-navigation href="*" />
+    <allow-intent href="file://*/*" />
+    <allow-intent href="*" />
+    <access origin="file://*/*" />
+    <access origin="*" />
 </widget>

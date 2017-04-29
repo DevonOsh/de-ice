@@ -9,8 +9,15 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+
     <plugin name="cordova-sqlite-storage" spec="~1.5.3" />
 
     <!--allow access to external link please-->
+    <allow-navigation href="file://*/*"/>
     <allow-navigation href="*" />
+    <allow-intent href="file://*/*"/>
+    <allow-intent href="*"/>
+    <access origin="file://*/*"/>
+    <access origin="*"/>
+
 </widget>

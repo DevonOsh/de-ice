@@ -33,11 +33,11 @@ var deIceApp = angular.module('deIceApp',["ngRoute"]);
 
 deIceApp.config(function($routeProvider, $locationProvider, $compileProvider){
 $compileProvider.aHrefSanitizationWhitelist(/^\s*(http|ftp|mailto|file|tel):/);
-//$locationProvider.hashPrefix('*');
+//$locationProvider.hashPrefix('');
 
   $routeProvider
   .when("/", {
-    templateUrl: 'calculationForm.html',
+    templateUrl: 'views/calculationForm.html',
     controller: "calcCtrl"
   })
   .when("/journal", {

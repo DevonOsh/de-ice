@@ -33,23 +33,23 @@ var deIceApp = angular.module('deIceApp',["ngRoute"]);
 
 deIceApp.config(function($routeProvider, $locationProvider, $compileProvider){
 $compileProvider.aHrefSanitizationWhitelist(/^\s*(http|ftp|mailto|file|tel):/);
-//$locationProvider.hashPrefix('*');
+$locationProvider.hashPrefix('');
 
   $routeProvider
   .when("/", {
-    templateUrl: 'calculationForm.html',
+    templateUrl: 'views/calculationForm.html',
     controller: "calcCtrl"
   })
   .when("/journal", {
-    template: "views/journal.html",
+    templateUrl: "views/journal.html",
     controller: "journalCtrl"
   })
   .when("/journalEntry", {
-    template: "views/journalEntry.html",
+    templateUrl: "views/journalEntry.html",
     controller: "journalEntryCtrl"
   })
   .when("/learn", {
-    template: "views/learn.html"
+    templateUrl: "views/learn.html"
   })
   .otherwise({
     template: "<h1>No template found</h1>"

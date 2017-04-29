@@ -48,7 +48,6 @@
                 )
               );
 
-              console.log("Final rate: " + finalRate);  //FIXME remove
           }).catch(function(error) {
               alert("Found none many :(" + error);
           });
