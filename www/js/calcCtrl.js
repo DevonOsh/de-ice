@@ -1,4 +1,4 @@
-  deIceApp.controller('calcCtrl', function($scope) {
+  deIceApp.controller('calcCtrl', function($scope, $location) {
       $scope.tempOptions = [ 
           { start: '1000', end: '1004', text: '30' },
           { start: '1005', end: '1008', text: '25-30'},
@@ -42,28 +42,15 @@
               var results = result.rows;
               alert("Results: " + results.length);
 
-              $scope.applicationRate = searchRates(material, 
+              applicationRate = searchRates(material, 
                 searchWeather(weather, 
                   searchForecast(forecast, results)
                 )
               );
 
-              console.log("Final rate: " + finalRate);  //FIXME remove
+              $location.path('/calcResult/' + applicationRate + "/" + area);
           }).catch(function(error) {
               alert("Found none many :(" + error);
           });
         }
-  });
-
-  deIceApp.controller('journalCtrl', function($scope) {
-      getJournals();
-  });
-
-  deIceApp.controller('journalEntryCtrl', function($scope, $location) {
-      $scope.journalData.date = new Date();
-      $scope.addJournal = function() {
-        alert($scope.journalData.temp);   //FIXME remove
-        addJournal($scope.journalData);
-        $location.path("/journal");
-      };
   });

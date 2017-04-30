@@ -1,4 +1,5 @@
 
+  //Data used by application
 	var ratesData = [
   		{_id: '1000', temp: "30", forecast: "rising", weather: "snow",
   			rates: {salt_wet_brine: 0.75, salt_wet_other: 0.5, salt_dry: 0.75, sand: null}
@@ -59,16 +60,19 @@
   		}
 	 ];
 
+   //Most database related functions
+
 	 function checkDB() {
 	 	var db = new PouchDB('app_rate.db');
     var hasData = false;
 
 	 	//Bulk load all the docs into the database
     db.get('1000').then(function(doc) {
+        //If this value starts changing, database may need to be cleared and reloaded
         var docTemp = doc.temp;
-        alert("The app has data, here's the temp: " + docTemp);
+        console.log("Data in app_rate.db, first temp: " + docTemp);
     }).catch(function(error) {
-        alert("No record found, fill that DB!");
+        //If there is no record, fill the db for the first time
         fillDB(); 
     });
   }
@@ -78,32 +82,14 @@
     var appRates = ratesData;
 
     db.bulkDocs(appRates).then(function(result) {
-        alert("Successful upload!");
+        console.log("Successful upload of app data");
     }).catch(function(error) {
         alert(error);
     });
   }
 
-  		//Create the temps index for running queries on
-      /*
-  		var tempsIndex = {
-  			_id: '_design/tempIndex',
-  			views: {
-  				'tempIndex': {
-  					map: function(doc) { emit(doc.temp, doc.rates); }
-  				}
-  			}
-  		};
-
-  		//Save the index
-  		db.put(tempsIndex).then(function() {
-  			alert("Index created");
-  		})
-  		.catch(function(error) {
-  			alert("Error creating index: " + error);
-  		});
-      */
-
+  //Called from calcCtrl
+  //Part of algorithm to search for application rate, searches forecasts
   function searchForecast(key, records) {
       alert("Searching forecasts...");
 
@@ -113,11 +99,11 @@
           foundRecords.push(records[i]);
         }
       }
-      alert(foundRecords.length); //FIXME remove
-      console.log(foundRecords);  //FIXME remove  
       return foundRecords;
   }
 
+  //Called from calcCtrl
+  //Part of algorithm to search for application rate, searches forecasts
   function searchWeather(key, records) {
       alert("Searching weather..." + records.length);
       var foundRecords = [];
@@ -126,11 +112,11 @@
           foundRecords.push(records[i]);
         }
       }
-      alert(foundRecords.length);   //FIXME remove
-      console.log(foundRecords);  //FIXME remove  
       return foundRecords;
   }
 
+  //Called from calcCtrl
+  //Part of algorithm to search for application rate, searches forecasts
   function searchRates(key, record) {
       console.log(record);
       var appRate;

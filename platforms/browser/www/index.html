@@ -19,12 +19,16 @@
         
         <script type="text/javascript" src="js/appData.js"></script>
         <script type="text/javascript" src="index.js"></script>
-        <script type="text/javascript" src="js/controller.js"></script>
+        <script type="text/javascript" src="js/homeCtrl.js"></script>
+        <script type="text/javascript" src="js/calcCtrl.js"></script>
+        <script type="text/javascript" src="js/journalCtrl.js"></script>
 
     </head>
     <body>
 
         <div id="deIceApp" class="container">
+            <!--Header-->
+            <!--Header not neccessarry with main menu page
         	<header>
 				<nav class="navbar navbar-default">
 					<div class="container">
@@ -39,36 +43,10 @@
 					</div>
 				</nav>
 			</header>
-
+            -->
+        <header>De-Ice</header>
         <ng-view></ng-view>
 
         </div>
     </body>
-
-    <script type="text/ng-template" id="calculationForm.html">
-        <div id="calcForm" class="form-group col-xs-12">
-        <label for="tempSelect">Temperature</label>
-        <select class="form-control" id="tempSelect" name="tempSelect" ng-model="formData.selectedTemp" ng-options="temp.text for temp in tempOptions">
-        </select>
-
-        <label for="forecastSelect">Forecast</label>
-        <select class="form-control" id="forecastSelect" name="forecastSelect" ng-model="formData.selectedForecast" ng-options="forecast.text for forecast in forecasts">
-        </select>
-
-        <label for="materialSelect">Weather</label>
-        <select class="form-control" id="weatherSelect" name="weatherSelect" ng-model="formData.selectedWeather" ng-options="weather.text for weather in weather">
-        </select>
-
-        <label for="materialSelect">Material</label>
-        <select class="form-control" id="materialSelect" name="materialSelect" ng-model="formData.selectedMaterial" ng-options="material.text for material in materialOptions">
-        </select>
-
-        <label for="areaInput">Area</label>
-        <input class="form-control" id="areaInput" name="areaInput" type="numeric" ng-model="area" />
-
-        <input class="btn btn-lg btn-default" type="submit" ng-click="getRecord()" value="Submit" />
-
-        <h4>{{ applicationRate }} </h4>
-</div>
-    </script>
 </html>

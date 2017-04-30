@@ -48,22 +48,8 @@
                 )
               );
 
-              console.log("Final rate: " + finalRate);  //FIXME remove
           }).catch(function(error) {
               alert("Found none many :(" + error);
           });
         }
-  });
-
-  deIceApp.controller('journalCtrl', function($scope) {
-      getJournals();
-  });
-
-  deIceApp.controller('journalEntryCtrl', function($scope, $location) {
-      $scope.journalData.date = new Date();
-      $scope.addJournal = function() {
-        alert($scope.journalData.temp);   //FIXME remove
-        addJournal($scope.journalData);
-        $location.path("/journal");
-      };
   });
