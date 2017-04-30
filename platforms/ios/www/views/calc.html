@@ -1,3 +1,8 @@
+<br />
+<br />
+<br />
+<a href="#/">Back</a>
+
 <div id="calcForm" class="form-group col-xs-12">
 	<label for="tempSelect">Temperature</label>
     <select class="form-control" id="tempSelect" name="tempSelect" ng-model="formData.selectedTemp" ng-options="temp.text for temp in tempOptions">
@@ -19,6 +24,4 @@
     <input class="form-control" id="areaInput" name="areaInput" type="numeric" ng-model="area" />
 
     <input class="btn btn-lg btn-default" type="submit" ng-click="getRecord()" value="Submit" />
-
-    <h4>{{ applicationRate }} </h4>
 </div>

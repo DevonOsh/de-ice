@@ -91,7 +91,7 @@
   //Called from calcCtrl
   //Part of algorithm to search for application rate, searches forecasts
   function searchForecast(key, records) {
-      alert("Searching forecasts...");
+      alert("Searching forecasts..." + records.length);
 
       var foundRecords = [];
       for (var i=0; i < records.length; i++ ) {

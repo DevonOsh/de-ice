@@ -30,8 +30,8 @@ deIceApp.config(function($routeProvider, $locationProvider, $compileProvider){
     controller: "calcCtrl"
   })
   .when("/calcResult/:rate/:area", {
-    templateUrl: "",
-    controller: "views/calcResult.html"
+    templateUrl: "views/calcResult.html",
+    controller: "calcResultCtrl"
   })
   .when("/journal", {
     templateUrl: "views/journal.html",
