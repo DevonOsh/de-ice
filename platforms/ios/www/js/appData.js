@@ -1,4 +1,6 @@
 
+  const rateDB = new PouchDB('app_rate.db');
+  const jrnlDB = new PouchDB('journal.db');
   //Data used by application
 	var ratesData = [
   		{_id: '1000', temp: "30", forecast: "rising", weather: "snow",
@@ -63,11 +65,11 @@
    //Most database related functions
 
 	 function checkDB() {
-	 	var db = new PouchDB('app_rate.db');
+	 	//var db = new PouchDB('app_rate.db');
     var hasData = false;
 
 	 	//Bulk load all the docs into the database
-    db.get('1000').then(function(doc) {
+    rateDB.get('1000').then(function(doc) {
         //If this value starts changing, database may need to be cleared and reloaded
         var docTemp = doc.temp;
         console.log("Data in app_rate.db, first temp: " + docTemp);
@@ -78,10 +80,10 @@
   }
 
   function fillDB() {
-    var db = new PouchDB('app_rate.db');
+    //var db = new PouchDB('app_rate.db');
     var appRates = ratesData;
 
-    db.bulkDocs(appRates).then(function(result) {
+    rateDB.bulkDocs(appRates).then(function(result) {
         console.log("Successful upload of app data");
     }).catch(function(error) {
         alert(error);
@@ -138,27 +140,17 @@
   }
 
   function addJournal(data) {
-      var db = new PouchDB('journal.db');
+      //var db = new PouchDB('journal.db');
 
-      db.post(data).then(function(reponse) {
-        alert(response);
+      console.log("Object in addJournal: ");
+      console.log(data);
+
+      jrnlDB.put(data).then(function(response) {
+        alert("Entry added ok? " + response.ok);
       }).catch(function(error) {
         alert(error);
       });
 
-   }
-
-   //FIXME
-   function getJournals() {
-      var db = new PouchDB('journal.db');
-      var journals = [];
-
-      db.allDocs({ include_docs: true }).then(function(response) {
-        journals = response.rows;
-        return journals;
-      }).catch(function(error) {
-        alert(error);
-      });
    }
 
    function deleteJournal(id) {

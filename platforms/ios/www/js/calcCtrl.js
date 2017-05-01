@@ -39,24 +39,33 @@ deIceApp.controller('calcCtrl', function($scope, $location) {
         var area = $scope.area;
         alert("Material at beginning of getRate: " + material);
 
-        db.allDocs({ include_docs: true, startkey: start, endkey: end}).then(function(result) {
-            var results = result.rows;
-            alert("Results: " + results.length);
+          db.allDocs({ include_docs: true, startkey: start, endkey: end}).then(function(result) {
+              var results = result.rows;
+              alert("Results: " + results.length);
 
-            applicationRate = searchRates(material, 
-              searchWeather(weather, 
-                searchForecast(forecast, results)
-              )
-            );
-
-            $location.path('/calcResult/' + applicationRate + "/" + area);
-        }).catch(function(error) {
-            alert("Found none many :(" + error);
-        });
+              applicationRate = searchRates(material, 
+                searchWeather(weather, 
+                  searchForecast(forecast, results)
+                )
+              );
+              $scope.$apply(function () {
+                $location.path('/calcResult/' + applicationRate + "/" + area);
+              });
+          }).catch(function(error) {
+              alert("Found none many :(" + error);
+          });
       }
 });
 
 deIceApp.controller('calcResultCtrl', function($scope, $location, $routeParams) {
-  $scope.appRate = $routeParams.rate;
-  $scope.area = $routeParams.area;
+  var appRate = $routeParams.rate;
+  var area = $routeParams.area;
+  const baseArea = 1000;
+
+  if (appRate == null) {
+    $scope.pounds = "This material is not appropriate for this weather. Please select a new material."
+  }
+  else {
+    $scope.pounds = (appRate/baseArea) * area;
+  }
 });
