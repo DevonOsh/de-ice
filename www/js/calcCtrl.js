@@ -62,7 +62,9 @@ deIceApp.controller('calcResultCtrl', function($scope, $location, $routeParams) 
   var area = $routeParams.area;
   const baseArea = 1000;
 
-  if (appRate == null) {
+  $scope.isNull = appRate == null;
+
+  if ($scope.isNull) {
     $scope.pounds = "This material is not appropriate for this weather. Please select a new material."
   }
   else {

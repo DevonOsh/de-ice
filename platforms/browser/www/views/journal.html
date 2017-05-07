@@ -4,8 +4,8 @@
 	<div class="col-xs-12">
 		<ul class="list-group">
 			<li class="list-group-item col-xs-12" ng-repeat="journal in journals">
-				<span class="col-xs-9">{{ journal.doc._id | date: MM-dd-yyy}}</span>
-				<span class="glyphicon glyphicon-remove-circle" ng-click="delete({{journal.doc._id}})"></span>
+				<span class="col-xs-9">{{ journal.doc._id | date: MM-dd-yyyy}}</span>
+				<span class="glyphicon glyphicon-remove-circle" ng-click="delete(journal)"></span>
 			</li>
 		</ul>
 	</div>

@@ -1,0 +1,51 @@
+
+@font-face {
+	font-family: 'Oswald';
+	src: url('../Oswald.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+}
+
+
+body {
+	font-family: 'Oswald', sans-serif;
+	color: #1ba8e0;
+	font-size: 28px;
+}
+
+a {
+	color: #1ba8e0;
+}
+
+.accentText {
+	color: #146990;
+}
+
+#mainMenu {
+	background-color: #d6e9f8;
+}
+
+#menuBtns {
+	bottom: 0px;
+	position: fixed;
+}
+
+.nav-btn {
+	height: 75px;
+	line-height: 75px;
+}
+
+.nav-txt {
+	padding-top: 23.5px;
+	padding-bottom: 23.5px;
+}
+
+.form-label {
+	font-size: 14px;
+}
+
+.form-control {
+	border-radius: 0;
+	border: 1px solid ##1ba8e0;
+	color: #146990;
+}
