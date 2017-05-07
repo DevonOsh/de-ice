@@ -24,10 +24,23 @@ deIceApp.controller('calcCtrl', function($scope, $location) {
       selectedTemp: $scope.tempOptions[0],
       selectedForecast: $scope.forecasts[0],
       selectedWeather: $scope.weather[0],
-      selectedMaterial: $scope.materialOptions[0]
+      selectedMaterial: $scope.materialOptions[0],
+      area: 100
     }
 
-    $scope.area = "100 sq. ft";
+    $scope.change = function() {
+      var temp = $scope.formData.selectedTemp.text;
+      var isBelow15 = ((temp === '0-15')||(temp === '0'));
+      if (isBelow15) {
+        $scope.weather = [{ id: 'snow', text: "Snow" }];
+      }
+
+      if(!isBelow15) {
+          $scope.weather = [
+            { id: 'snow', text: "Snow" }, { id: 'freezing rain' ,text: "Freezing Rain" }
+          ];
+      }
+    }
 
     $scope.getRecord = function() {
       	var start = $scope.formData.selectedTemp.start;
@@ -41,7 +54,7 @@ deIceApp.controller('calcCtrl', function($scope, $location) {
 
     function getRate(start, end, forecast, weather, material) {
         var db = new PouchDB('app_rate.db');
-        var area = $scope.area;
+        var area = $scope.formData.area;
 
           db.allDocs({ include_docs: true, startkey: start, endkey: end}).then(function(result) {
               var results = result.rows;
@@ -67,7 +80,7 @@ deIceApp.controller('calcResultCtrl', function($scope, $location, $routeParams) 
   var area = $routeParams.area;
   const baseArea = 1000;
 
-  $scope.isNull = (appRate == null);
+  $scope.isNull = (appRate == 'null');
 
   if (!($scope.isNull)) {
     $scope.pounds = (appRate/baseArea) * area;
