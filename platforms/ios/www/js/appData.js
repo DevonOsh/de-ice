@@ -123,20 +123,25 @@
       console.log(record);
       var appRate;
       var rates = record[0].doc.rates;
-      if (key === 'salt_brine') {
-        appRate = rates.salt_wet_brine;
+      if(record.length = 0) {
+        return null;
       }
-      if (key === 'salt_other') {
-        appRate = rates.salt_wet_other;
-      }
-      if (key === 'salt_dry') {
-        appRate = rates.salt_dry;
-      }
-      if (key === 'sand') {
-        appRate = rates.sand;
-      }
+      else {
+        if (key === 'salt_brine') {
+          appRate = rates.salt_wet_brine;
+        }
+        if (key === 'salt_other') {
+          appRate = rates.salt_wet_other;
+        }
+        if (key === 'salt_dry') {
+          appRate = rates.salt_dry;
+        }
+        if (key === 'sand') {
+          appRate = rates.sand;
+        }
 
-      return appRate;
+        return appRate;
+      }
   }
 
   function addJournal(data) {

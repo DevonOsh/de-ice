@@ -20,39 +20,44 @@ deIceApp.controller('calcCtrl', function($scope, $location) {
         { id: 'sand', text: "Sand" }
     ];
 
+    $scope.formData = {
+      selectedTemp: $scope.tempOptions[0],
+      selectedForecast: $scope.forecasts[0],
+      selectedWeather: $scope.weather[0],
+      selectedMaterial: $scope.materialOptions[0]
+    }
+
     $scope.area = "100 sq. ft";
 
-    $scope.applicationRate = "Enter info for application rates.";
-
     $scope.getRecord = function() {
-      	 var start = $scope.formData.selectedTemp.start;
-         var end = $scope.formData.selectedTemp.end;
-         var forecast = $scope.formData.selectedForecast.id;
-         var weather = $scope.formData.selectedWeather.id;
-         var material = $scope.formData.selectedMaterial.id;
+      	var start = $scope.formData.selectedTemp.start;
+        var end = $scope.formData.selectedTemp.end;
+        var forecast = $scope.formData.selectedForecast.id;
+        var weather = $scope.formData.selectedWeather.id;
+        var material = $scope.formData.selectedMaterial.id;
 
-          getRate(start, end, forecast, weather, material);
+        getRate(start, end, forecast, weather, material);
     };
 
     function getRate(start, end, forecast, weather, material) {
         var db = new PouchDB('app_rate.db');
         var area = $scope.area;
-        alert("Material at beginning of getRate: " + material);
 
           db.allDocs({ include_docs: true, startkey: start, endkey: end}).then(function(result) {
               var results = result.rows;
-              alert("Results: " + results.length);
 
               applicationRate = searchRates(material, 
                 searchWeather(weather, 
                   searchForecast(forecast, results)
                 )
               );
+
               $scope.$apply(function () {
                 $location.path('/calcResult/' + applicationRate + "/" + area);
               });
           }).catch(function(error) {
-              alert("Found none many :(" + error);
+              //console.log("Found none many :(" + error);
+              $location.path('/calcResult/null/0');
           });
       }
 });
@@ -62,12 +67,9 @@ deIceApp.controller('calcResultCtrl', function($scope, $location, $routeParams) 
   var area = $routeParams.area;
   const baseArea = 1000;
 
-  $scope.isNull = appRate == null;
+  $scope.isNull = (appRate == null);
 
-  if ($scope.isNull) {
-    $scope.pounds = "This material is not appropriate for this weather. Please select a new material."
-  }
-  else {
+  if (!($scope.isNull)) {
     $scope.pounds = (appRate/baseArea) * area;
   }
 });

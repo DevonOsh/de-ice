@@ -1,1 +1,11 @@
-<h2>Pounds of material needed: {{ pounds }}</h2>
+<a href="#/calc">Back</a>
+
+<div ng-if="isNull">
+	<span>This material is not appropriate for this weather</span>
+	<span>Please go back and try a different material</span>
+</div>
+
+<div ng-if="!isNull">
+	<h1>Results</h1>
+	<h2>Amount of material needed: {{ pounds }}lbs</h2>
+</div>
