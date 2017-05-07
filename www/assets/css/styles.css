@@ -49,3 +49,9 @@ a {
 	border: 1px solid ##1ba8e0;
 	color: #146990;
 }
+
+.btn-lg {
+	height: 75px;
+	background-color: #146990;
+	color: #fff;
+}
