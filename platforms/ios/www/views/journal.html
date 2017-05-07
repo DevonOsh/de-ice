@@ -5,7 +5,7 @@
 		<ul class="list-group">
 			<li class="list-group-item col-xs-12" ng-repeat="journal in journals">
 				<span class="col-xs-9">{{ journal.doc._id | date: MM-dd-yyyy}}</span>
-				<span class="glyphicon glyphicon-remove-circle" ng-click="delete(journal)"></span>
+				<span class="glyphicon glyphicon-remove-circle" ng-click="delete(journal.doc)"></span>
 			</li>
 		</ul>
 	</div>

@@ -18,8 +18,8 @@ deIceApp.controller('journalCtrl', function($scope) {
       });
     }
 
-    $scope.delete = function(id) {
-      jrnlDB.get(id).then( (doc) => {
+    $scope.delete = function(jrnlDoc) {
+      jrnlDB.get(jrnlDoc).then( (doc) => {
         return db.remove(doc);
       })
       .then( (result) => {

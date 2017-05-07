@@ -18,13 +18,14 @@ deIceApp.controller('journalCtrl', function($scope) {
       });
     }
 
-    $scope.delete = function(id) {
-      jrnlDB.get(id).then( (doc) => {
-        return db.remove(doc);
+    $scope.delete = function(jrnlID) {
+      jrnlDB.get(jrnlID).then( (doc) => {
+        return jrnlDB.remove(doc);
       })
       .then( (result) => {
         alert("Record removed: " + result.ok);
         //$scope.$apply();
+        getJournals();
       })
       .catch( (error) => {
         console.log(error);
