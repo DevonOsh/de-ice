@@ -1,0 +1,26 @@
+<div id="journalView" class="col-xs-12">
+	<a href="#/journal" class="btn btn-lg col-xs-6">Back</a>
+
+	<span class="jrnl_date col-xs-6">{{ journalDate | date: MM-dd-yyyy }}</span>
+</div>
+
+<div class="col-xs-12">
+	<ul class="list-group">
+		<li class="list-group-item col-xs-12">
+			<span class="col-xs-6">TEMPERATURE</span>
+			<span class="col-xs-6">{{ journalData.temp }}</span>
+		</li>
+		<li class="list-group-item col-xs-12">
+			<span class="col-xs-6">MATERIAL</span>
+			<span class="col-xs-6">{{ journalData.material }}</span>
+		</li>
+		<li class="list-group-item col-xs-12">
+			<span class="col-xs-6">AMOUNT EXPECTED</span>
+			<span class="col-xs-6">{{ journalData.expectedAmt }}</span>
+		</li>
+		<li class="list-group-item col-xs-12">
+			<span class="col-xs-6">AMOUNT USED</span>
+			<span class="col-xs-6">{{ journalData.actualAmt }}</span>
+		</li>
+	</ul>
+</div>

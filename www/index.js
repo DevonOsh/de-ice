@@ -1,6 +1,5 @@
 
 document.addEventListener('deviceready', function() {
-	alert("Device is ready!");
 
   //This code is for testing the database control code in appData,js
   //If successfull, this is the code that will be used.
@@ -40,6 +39,10 @@ deIceApp.config(function($routeProvider, $locationProvider, $compileProvider){
   .when("/journalEntry", {
     templateUrl: "views/journalEntry.html",
     controller: "journalEntryCtrl"
+  })
+  .when("/journalView/:id", {
+    templateUrl: "views/journalView.html",
+    controller: "journalViewCtrl"
   })
   .when("/learn", {
     templateUrl: "views/learn.html"

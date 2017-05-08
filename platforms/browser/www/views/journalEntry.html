@@ -1,11 +1,23 @@
+<div id="journalEntry" class="col-xs-12">	
 	<a href="#/journal" class="btn btn-lg col-xs-6">Back</a>
+
+	<span class="jrnl_date">{{ journalDate | date: MM-dd-yyyy }}</span>
+
 	<form>
 		<div class="form-group">
-			<input type="text" class="form-control input-lg text-center" placeholder="Temperature" ng-model="journalData.temp" />
-			<input type="text" class="form-control input-lg text-center" placeholder="Material" ng-model="journalData.material" />
-			<input type="text" class="form-control input-lg text-center" placeholder="Amount Expected" ng-model="journalData.expectedAmt" />
-			<input type="text" class="form-control input-lg text-center" placeholder="Amount Used" ng-model="journalData.actualAmt" />
+			<label class="form-label" for="temp">TEMPERATURE</label>
+			<select name="temp" class="form-control input-lg text-center" placeholder="Temperature" ng-model="journalData.temp" ng-options="temp as temp for temp in temps"></select>
+
+			<label class="form-label" for="material">MATERIAL</label>
+			<select name="material" class="form-control input-lg text-center" placeholder="Material" ng-model="journalData.material" ng-options="material as material for material in materials"></select>
+
+			<label class="form-label" for="expectedAmt">AMOUNT EXPECTED</label>
+			<input type="text" name="expectedAmt" class="form-control input-lg text-center" placeholder="Amount Expected" ng-model="journalData.expectedAmt" />
+
+			<label class="form-label" for="actualAmt">AMOUNT USED</label>
+			<input type="text" name="actualAmt" class="form-control input-lg text-center" placeholder="Amount Used" ng-model="journalData.actualAmt" />
 		</div>
 
 		<button type="submit" class="btn btn-lg col-xs-12" ng-click="add()">Add Item</button>
 	</form>
+</div>

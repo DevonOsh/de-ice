@@ -55,3 +55,31 @@ a {
 	background-color: #146990;
 	color: #fff;
 }
+
+.list-group-item:last-child {
+	border-radius: 0;
+}
+
+.list-group-item:first-child {
+	border-radius: 0;
+}
+
+.list-group-item {
+	border: 0;
+}
+
+.jrnl-item {
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+	height: 75px;
+}
+
+.col-xs-12 {
+	padding-right: 0;
+  	padding-left: 0;
+}
+
+.container {
+	padding-right: 0;
+  	padding-left: 0;
+}
