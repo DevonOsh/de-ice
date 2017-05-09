@@ -22,7 +22,8 @@ deIceApp.config(function($routeProvider, $locationProvider, $compileProvider){
 
   $routeProvider
   .when("/", {
-    templateUrl: "views/home.html"
+    templateUrl: "views/home.html",
+    bodyClass: 'home'
   })
   .when("/calc", {
     templateUrl: 'views/calc.html',
@@ -51,5 +52,13 @@ deIceApp.config(function($routeProvider, $locationProvider, $compileProvider){
     template: "<h1>No template found</h1>"
   });
 });
+
+deIceApp.run(['$location', '$rootScope', function($location, $rootScope) {
+  $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
+    if(current.$$route) {
+      $rootScope.bodyClass = current.$$route.bodyClass;
+    }
+  });
+}]);
 
 

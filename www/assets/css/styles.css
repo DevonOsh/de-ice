@@ -21,7 +21,7 @@ a {
 
 .form-control {
 	border-radius: 0;
-	border: 2px solid ##1ba8e0;
+	border: 2px solid #1ba8e0;
 	color: #146990;
 	height: 50px;
 	font-size: 28px;
@@ -47,12 +47,7 @@ a {
 	border: 0;
 }
 
-.col-xs-12 {
-	padding-right: 0;
-  	padding-left: 0;
-}
-
-.col-xs-9 {
+.col-xs-12, .col-xs-9, .col-xs-6 {
 	padding-right: 0;
   	padding-left: 0;
 }
@@ -70,7 +65,7 @@ a {
 	color: #146990;
 }
 
-#mainMenu {
+.home {
 	background-color: #d6e9f8;
 }
 
@@ -108,5 +103,5 @@ a {
 }
 
 .page-title {
-	
+
 }
