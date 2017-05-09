@@ -58,6 +58,7 @@ header {
 
 .list-group-item {
 	border: 0;
+	background-color: inherit;
 }
 
 .col-xs-12, .col-xs-9, .col-xs-6 {
