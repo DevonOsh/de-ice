@@ -1,14 +1,13 @@
-# A Blank PhoneGap App
+# De-Ice App
 
 ## Usage
 
 ### PhoneGap CLI
 
-    $ phonegap create my-app --template blank
+    $ phonegap serve from root of application
 
 ### Desktop
 
-In your browser, open the file:
 
-    /www/index.html
+    $ phonegap run browser
 
