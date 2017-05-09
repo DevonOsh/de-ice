@@ -1,10 +1,13 @@
-<div id="journalMain" class="col-xs-12">
-	<a href="#/journalEntry" class="btn btn-lg col-xs-12">Add New Entry</a>
+<div id="journalMain">
+	<a href="#/" class="btn btn-lg col-xs-6 app-btn">MENU</a>
+	<a href="#/journalEntry" class="btn btn-lg col-xs-12 app-btn">ADD NEW ENTRY</a>
 
-	<div class="col-xs-12">
+	<div id="jrnl-entries" class="col-xs-12">
 		<ul class="list-group">
-			<li class="list-group-item col-xs-12" ng-repeat="journal in journals">
-				<span class="col-xs-9">{{ journal.doc._id | date: MM-dd-yyyy}}</span>
+			<li class="list-group-item list-item col-xs-12" ng-repeat="journal in journals | orderBy:'-doc._id'">
+				<a href="#/journalView/{{journal.doc._id}}">
+					<span class="col-xs-9">{{ journal.doc._id | date: MM-dd-yyyy}}</span>
+				</a>
 				<span class="glyphicon glyphicon-remove-circle" ng-click="delete(journal.doc._id)"></span>
 			</li>
 		</ul>

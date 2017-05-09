@@ -1,5 +1,5 @@
 <div id="journalEntry" class="col-xs-12">	
-	<a href="#/journal" class="btn btn-lg col-xs-6">Back</a>
+	<a href="#/journal" class="btn btn-lg col-xs-6">BACK</a>
 
 	<span class="jrnl_date">{{ journalDate | date: MM-dd-yyyy }}</span>
 
@@ -18,6 +18,6 @@
 			<input type="text" name="actualAmt" class="form-control input-lg text-center" placeholder="Amount Used" ng-model="journalData.actualAmt" />
 		</div>
 
-		<button type="submit" class="btn btn-lg col-xs-12" ng-click="add()">Add Item</button>
+		<button type="submit" class="btn btn-lg col-xs-12 app-btn bottom-btn" ng-click="add()">Add Item</button>
 	</form>
 </div>

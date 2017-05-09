@@ -17,6 +17,55 @@ a {
 	color: #1ba8e0;
 }
 
+/*Bootstrap overrides*/
+
+.form-control {
+	border-radius: 0;
+	border: 2px solid ##1ba8e0;
+	color: #146990;
+	height: 50px;
+	font-size: 28px;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+}
+
+
+.btn-lg {
+	border-radius: 0;
+}
+
+
+.list-group-item:last-child {
+	border-radius: 0;
+}
+
+.list-group-item:first-child {
+	border-radius: 0;
+}
+
+.list-group-item {
+	border: 0;
+}
+
+.col-xs-12 {
+	padding-right: 0;
+  	padding-left: 0;
+}
+
+.col-xs-9 {
+	padding-right: 0;
+  	padding-left: 0;
+}
+
+/*App styles*/
+.app-btn {
+	height: 75px;
+	background-color: #146990;
+	color: #fff;
+	padding-right: 37px;
+	padding-left: 37px;
+}
+
 .accentText {
 	color: #146990;
 }
@@ -44,14 +93,20 @@ a {
 	font-size: 14px;
 }
 
-.form-control {
-	border-radius: 0;
-	border: 1px solid ##1ba8e0;
-	color: #146990;
+.list-item {
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+	height: 75px;
 }
 
-.btn-lg {
-	height: 75px;
-	background-color: #146990;
-	color: #fff;
+#jrnl-entries {
+	padding-top: 75px;
+}
+
+.bottom-btn {
+	margin-top: 60px;
+}
+
+.page-title {
+	
 }
