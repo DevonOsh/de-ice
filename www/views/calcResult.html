@@ -1,11 +1,16 @@
-<a class="btn btn-lg col-xs-6" href="#/calc">BACK</a>
+<div class="col-xs-6">
+    <span class="page-title">RESULT</span>
+</div>
+<div class="col-xs-6">
+	<a class="menu-btn pull-right" href="#/calc">BACK</a>
+</div>
 
 <div ng-if="isNull">
-	<span>This material is not appropriate for this weather</span>
-	<span>Please go back and try a different material</span>
+	<span class="class=col-xs-12">This material is not appropriate for this weather</span>
+	<span class="class=col-xs-12">Please go back and try a different material</span>
 </div>
 
 <div ng-if="!isNull">
-	<h1>Results</h1>
-	<h2>Amount of material needed: {{ pounds }}lbs</h2>
+	<span class="class=col-xs-12">Amount of material needed:</span>
+	<span class="class=col-xs-12">{{ pounds }}lbs</span>
 </div>

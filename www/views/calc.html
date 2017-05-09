@@ -1,4 +1,3 @@
-<br />
 <div class="col-xs-6">
     <span class="page-title">CALCULATOR</span>
 </div>
@@ -8,23 +7,23 @@
 
 <div id="calcForm" class="form-group col-xs-12">
 	<label class="form-label" for="tempSelect">TEMPERATURE</label>
-    <select class="form-control" id="tempSelect" name="tempSelect" ng-model="formData.selectedTemp" ng-change="change()" ng-options="temp.text for temp in tempOptions">
+    <select class="form-control form-select" id="tempSelect" name="tempSelect" ng-model="formData.selectedTemp" ng-change="change()" ng-options="temp.text for temp in tempOptions">
     </select>
 
     <label class="form-label" for="forecastSelect">FORECAST</label>
-    <select class="form-control" id="forecastSelect" name="forecastSelect" ng-model="formData.selectedForecast" ng-options="forecast.text for forecast in forecasts">
+    <select class="form-control form-select" id="forecastSelect" name="forecastSelect" ng-model="formData.selectedForecast" ng-options="forecast.text for forecast in forecasts">
     </select>
 
     <label class="form-label" for="materialSelect">WEATHER</label>
-    <select class="form-control" id="weatherSelect" name="weatherSelect" ng-model="formData.selectedWeather" ng-options="weather.text for weather in weather">
+    <select class="form-control form-select" id="weatherSelect" name="weatherSelect" ng-model="formData.selectedWeather" ng-options="weather.text for weather in weather">
     </select>
 
     <label class="form-label" for="materialSelect">MATERIAL</label>
-    <select class="form-control" id="materialSelect" name="materialSelect" ng-model="formData.selectedMaterial" ng-options="material.text for material in materialOptions">
+    <select class="form-control form-select" id="materialSelect" name="materialSelect" ng-model="formData.selectedMaterial" ng-options="material.text for material in materialOptions">
     </select>
 
     <label class="form-label" for="areaInput">AREA</label>
-    <input class="form-control" id="areaInput" name="areaInput" type="numeric" ng-model="formData.area" />
+    <input class="form-control form-text" id="areaInput" name="areaInput" type="numeric" ng-model="formData.area" />
 
     <input class="btn btn-lg col-xs-12 app-btn bottom-btn" type="submit" ng-click="getRecord()" value="SUBMIT" />
 </div>

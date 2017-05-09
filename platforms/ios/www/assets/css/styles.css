@@ -17,18 +17,31 @@ a {
 	color: #1ba8e0;
 }
 
+header {
+	font-size: 14px;
+}
+
 /*Bootstrap overrides*/
 
 .form-control {
 	border-radius: 0;
-	border: 2px solid ##1ba8e0;
+	border: 2px solid #1ba8e0;
 	color: #146990;
 	height: 50px;
 	font-size: 28px;
 	box-shadow: none;
+	background-image: none;
 	-webkit-box-shadow: none;
+	background-color: #fff;
+	padding: .1em;
+	padding-left: .5em;
+	-webkit-appearance: none;
+	-moz-appearance: none;
 }
 
+.form-select {
+	background: url('../img/caret.png') no-repeat 90%;
+}
 
 .btn-lg {
 	border-radius: 0;
@@ -47,12 +60,7 @@ a {
 	border: 0;
 }
 
-.col-xs-12 {
-	padding-right: 0;
-  	padding-left: 0;
-}
-
-.col-xs-9 {
+.col-xs-12, .col-xs-9, .col-xs-6 {
 	padding-right: 0;
   	padding-left: 0;
 }
@@ -64,13 +72,14 @@ a {
 	color: #fff;
 	padding-right: 37px;
 	padding-left: 37px;
+	font-size: 28px;
 }
 
 .accentText {
 	color: #146990;
 }
 
-#mainMenu {
+.home {
 	background-color: #d6e9f8;
 }
 
@@ -89,7 +98,7 @@ a {
 	padding-bottom: 23.5px;
 }
 
-.form-label {
+.form-label, .head-label {
 	font-size: 14px;
 }
 
@@ -104,9 +113,22 @@ a {
 }
 
 .bottom-btn {
-	margin-top: 60px;
+	margin-top: 50px;
+}
+
+.top-btn {
+	margin-top: 40px;
 }
 
 .page-title {
-	
+	color: #146990;
+}
+
+#jrnl-date {
+	font-size: 45px;
+}
+
+.jrnl-detail-txt {
+	font-size: 14px;
+	margin-top: 40px;
 }

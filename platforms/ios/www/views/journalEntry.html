@@ -1,21 +1,26 @@
 <div id="journalEntry" class="col-xs-12">	
-	<a href="#/journal" class="btn btn-lg col-xs-6">BACK</a>
+	<div class="col-xs-6">
+		<span class="page-title">JOURNAL</span>
+	</div>
+	<div class="col-xs-6">
+		<a class="menu-btn pull-right" href="#/journal">BACK</a>
+	</div>
 
-	<span class="jrnl_date">{{ journalDate | date: MM-dd-yyyy }}</span>
+	<span id="jrnl-date">{{ journalDate | date: MM-dd-yyyy }}</span>
 
 	<form>
-		<div class="form-group">
+		<div class="form-group col-xs-12">
 			<label class="form-label" for="temp">TEMPERATURE</label>
-			<select name="temp" class="form-control input-lg text-center" placeholder="Temperature" ng-model="journalData.temp" ng-options="temp as temp for temp in temps"></select>
+			<select name="temp" class="form-control form-select" placeholder="Temperature" ng-model="journalData.temp" ng-options="temp as temp for temp in temps"></select>
 
 			<label class="form-label" for="material">MATERIAL</label>
-			<select name="material" class="form-control input-lg text-center" placeholder="Material" ng-model="journalData.material" ng-options="material as material for material in materials"></select>
+			<select name="material" class="form-control form-select" placeholder="Material" ng-model="journalData.material" ng-options="material as material for material in materials"></select>
 
 			<label class="form-label" for="expectedAmt">AMOUNT EXPECTED</label>
-			<input type="text" name="expectedAmt" class="form-control input-lg text-center" placeholder="Amount Expected" ng-model="journalData.expectedAmt" />
+			<input type="text" name="expectedAmt" class="form-control" placeholder="Amount Expected" ng-model="journalData.expectedAmt" />
 
 			<label class="form-label" for="actualAmt">AMOUNT USED</label>
-			<input type="text" name="actualAmt" class="form-control input-lg text-center" placeholder="Amount Used" ng-model="journalData.actualAmt" />
+			<input type="text" name="actualAmt" class="form-control" placeholder="Amount Used" ng-model="journalData.actualAmt" />
 		</div>
 
 		<button type="submit" class="btn btn-lg col-xs-12 app-btn bottom-btn" ng-click="add()">Add Item</button>
