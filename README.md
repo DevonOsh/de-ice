@@ -3,8 +3,13 @@
 ## Usage
 
 ### PhoneGap CLI
+	With companion app from root of app
 
-    $ phonegap serve from root of application
+    $ phonegap serve
+
+    In simulator
+
+    $ phonegap run ios
 
 ### Desktop
 
