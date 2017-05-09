@@ -133,3 +133,16 @@ header {
 	font-size: 14px;
 	margin-top: 40px;
 }
+
+.learn-heading {
+	font-size: 14px;
+}
+
+.learn-content {
+	font-size: 18px;
+	color: #146990;
+}
+
+.learn-sec {
+	margin-top: 50px;
+}

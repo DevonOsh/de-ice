@@ -65,7 +65,6 @@
    //Most database related functions
 
 	 function checkDB() {
-	 	//var db = new PouchDB('app_rate.db');
     var hasData = false;
 
 	 	//Bulk load all the docs into the database
@@ -80,7 +79,6 @@
   }
 
   function fillDB() {
-    //var db = new PouchDB('app_rate.db');
     var appRates = ratesData;
 
     rateDB.bulkDocs(appRates).then(function(result) {
@@ -93,8 +91,6 @@
   //Called from calcCtrl
   //Part of algorithm to search for application rate, searches forecasts
   function searchForecast(key, records) {
-      alert("Searching forecasts..." + records.length);
-
       var foundRecords = [];
       for (var i=0; i < records.length; i++ ) {
         if (records[i].doc.forecast == key) {
@@ -107,7 +103,6 @@
   //Called from calcCtrl
   //Part of algorithm to search for application rate, searches forecasts
   function searchWeather(key, records) {
-      alert("Searching weather..." + records.length);
       var foundRecords = [];
       for (var i=0; i < records.length; i++ ) {
         if (records[i].doc.weather === key) {
